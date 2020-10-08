@@ -12,7 +12,10 @@ export class Leads extends Component {
 
     static propTypes = {
 
-        leads : PropTypes.array.isRequired
+        leads : PropTypes.array.isRequired,
+        getLeads :PropTypes.func.isRequired,
+        deleteLead :PropTypes.func.isRequired
+
     } ;
 
     componentDidMount() {
