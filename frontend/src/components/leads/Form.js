@@ -24,15 +24,15 @@ onChange = (e) => this.setState({ [e.target.name]: e.target.value });
 
 onSubmit = (e) => {
         e.preventDefault();
-        // const { name, email, message } = this.state;
-        // const lead = { name, email, message };
-        // this.props.addLead(lead);
+        const { name, email, message } = this.state;
+        const lead = { name, email, message };
+        this.props.addLead(lead);
         // this.setState({
         //   name: '',
         //   email: '',
         //   message: '',
         // });
-        console.log("submit");
+        // console.log("submit");
       };      
 
     render() {
