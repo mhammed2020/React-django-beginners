@@ -3400,7 +3400,7 @@ eval("module.exports = function(module) {\n\tif (!module.webpackPolyfill) {\n\t\
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getLeads\", function() { return getLeads; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"deleteLead\", function() { return deleteLead; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"addLead\", function() { return addLead; });\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./types */ \"./src/actions/types.js\");\n\n //get leads methods\n\nvar getLeads = function getLeads() {\n  return function (dispatch) {\n    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/leads/').then(function (res) {\n      dispatch({\n        type: _types__WEBPACK_IMPORTED_MODULE_1__[\"GET_LEADS\"],\n        payload: res.data\n      });\n    })[\"catch\"](function (err) {\n      return console.log(err);\n    });\n  };\n}; //delete LEAD \n\nvar deleteLead = function deleteLead(id) {\n  return function (dispatch) {\n    axios__WEBPACK_IMPORTED_MODULE_0___default.a[\"delete\"](\"/api/leads/\".concat(id, \"/\")).then(function (res) {\n      dispatch({\n        type: _types__WEBPACK_IMPORTED_MODULE_1__[\"DELETE_LEAD\"],\n        payload: id\n      });\n    })[\"catch\"](function (err) {\n      return console.log(err);\n    });\n  };\n}; //ADD LEAD \n\nvar addLead = function addLead(lead) {\n  return function (dispatch) {\n    axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/leads/', lead).then(function (res) {\n      dispatch({\n        type: _types__WEBPACK_IMPORTED_MODULE_1__[\"ADD_LEAD\"],\n        payload: res.data\n      });\n    })[\"catch\"](function (err) {\n      return console.log(err);\n    });\n  };\n};\n\n//# sourceURL=webpack:///./src/actions/leads.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getLeads\", function() { return getLeads; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"deleteLead\", function() { return deleteLead; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"addLead\", function() { return addLead; });\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./types */ \"./src/actions/types.js\");\n\n //get leads methods\n\nvar getLeads = function getLeads() {\n  return function (dispatch) {\n    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/leads/').then(function (res) {\n      dispatch({\n        type: _types__WEBPACK_IMPORTED_MODULE_1__[\"GET_LEADS\"],\n        payload: res.data\n      });\n    })[\"catch\"](function (err) {\n      return console.log(err);\n    });\n  };\n}; //delete LEAD \n\nvar deleteLead = function deleteLead(id) {\n  return function (dispatch) {\n    axios__WEBPACK_IMPORTED_MODULE_0___default.a[\"delete\"](\"/api/leads/\".concat(id, \"/\")).then(function (res) {\n      dispatch({\n        type: _types__WEBPACK_IMPORTED_MODULE_1__[\"DELETE_LEAD\"],\n        payload: id\n      });\n    })[\"catch\"](function (err) {\n      return console.log(err);\n    });\n  };\n}; //ADD LEAD \n\nvar addLead = function addLead(lead) {\n  return function (dispatch) {\n    axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/leads/', lead).then(function (res) {\n      dispatch({\n        type: _types__WEBPACK_IMPORTED_MODULE_1__[\"ADD_LEAD\"],\n        payload: res.data\n      });\n    })[\"catch\"](function (err) {\n      return console.log(err.response.data);\n    });\n  };\n};\n\n//# sourceURL=webpack:///./src/actions/leads.js?");
 
 /***/ }),
 
@@ -3408,11 +3408,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /*!******************************!*\
   !*** ./src/actions/types.js ***!
   \******************************/
-/*! exports provided: GET_LEADS, DELETE_LEAD, ADD_LEAD */
+/*! exports provided: GET_LEADS, DELETE_LEAD, ADD_LEAD, GET_ERRORS */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"GET_LEADS\", function() { return GET_LEADS; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"DELETE_LEAD\", function() { return DELETE_LEAD; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"ADD_LEAD\", function() { return ADD_LEAD; });\nvar GET_LEADS = \"GET_LEADS\";\nvar DELETE_LEAD = \"DELETE_LEAD\";\nvar ADD_LEAD = \"ADD_LEAD\";\n\n//# sourceURL=webpack:///./src/actions/types.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"GET_LEADS\", function() { return GET_LEADS; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"DELETE_LEAD\", function() { return DELETE_LEAD; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"ADD_LEAD\", function() { return ADD_LEAD; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"GET_ERRORS\", function() { return GET_ERRORS; });\nvar GET_LEADS = \"GET_LEADS\";\nvar DELETE_LEAD = \"DELETE_LEAD\";\nvar ADD_LEAD = \"ADD_LEAD\";\nvar GET_ERRORS = \"GET_ERRORS\";\n\n//# sourceURL=webpack:///./src/actions/types.js?");
 
 /***/ }),
 
@@ -3500,6 +3500,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _com
 
 /***/ }),
 
+/***/ "./src/reducers/errors.js":
+/*!********************************!*\
+  !*** ./src/reducers/errors.js ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _actions_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/types */ \"./src/actions/types.js\");\n\nvar initialState = {\n  msg: {},\n  status: null\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (function () {\n  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;\n  var action = arguments.length > 1 ? arguments[1] : undefined;\n\n  switch (action.type) {\n    case _actions_types__WEBPACK_IMPORTED_MODULE_0__[\"GET_ERRORS\"]:\n      return {\n        msg: action.payload.msg,\n        status: action.payload.status\n      };\n\n    default:\n      return state;\n  }\n});\n\n//# sourceURL=webpack:///./src/reducers/errors.js?");
+
+/***/ }),
+
 /***/ "./src/reducers/index.js":
 /*!*******************************!*\
   !*** ./src/reducers/index.js ***!
@@ -3508,7 +3520,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _com
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ \"./node_modules/redux/es/redux.js\");\n/* harmony import */ var _leads__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./leads */ \"./src/reducers/leads.js\");\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__[\"combineReducers\"])({\n  leads: _leads__WEBPACK_IMPORTED_MODULE_1__[\"default\"]\n}));\n\n//# sourceURL=webpack:///./src/reducers/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ \"./node_modules/redux/es/redux.js\");\n/* harmony import */ var _leads__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./leads */ \"./src/reducers/leads.js\");\n/* harmony import */ var _errors__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./errors */ \"./src/reducers/errors.js\");\n\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__[\"combineReducers\"])({\n  leads: _leads__WEBPACK_IMPORTED_MODULE_1__[\"default\"],\n  errors: _errors__WEBPACK_IMPORTED_MODULE_2__[\"default\"]\n}));\n\n//# sourceURL=webpack:///./src/reducers/index.js?");
 
 /***/ }),
 
