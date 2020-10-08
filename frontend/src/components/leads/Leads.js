@@ -5,7 +5,7 @@ import React, { Component,Fragment } from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
-import {getLeads} from '../../actions/leads';
+import {getLeads,deleteLead} from '../../actions/leads';
 
 export class Leads extends Component {
 
@@ -24,6 +24,7 @@ export class Leads extends Component {
         return (
             <Fragment>
                <h1>Leads</h1> 
+            
 <table className=" table table-striped ">
 
 <thead>
@@ -37,6 +38,7 @@ export class Leads extends Component {
          <th/>
     </tr>
 </thead>
+
 <tbody>
 {this.props.leads.map(lead => (
     <tr key={lead.id}>
@@ -44,7 +46,11 @@ export class Leads extends Component {
          <td>{lead.name} </td>
          <td>{lead.email} </td>
          <td>{lead.message} </td>
-         <td>  <button className="btn btn-danger btn-sm"> 
+         <td>  <button 
+         onClick={this.props.deleteLead.bind
+            (this,lead.id)} 
+         className="btn btn-danger btn-sm"> 
+         {" "}
          Delete </button> </td>
     </tr>
 ))}
@@ -60,4 +66,7 @@ const mapStateToProps = state => ( {
 leads : state.leads.leads
 });
 
-export default connect(mapStateToProps,{ getLeads }) (Leads);
+export default connect(
+    mapStateToProps,
+    {getLeads,deleteLead }
+    ) (Leads);
