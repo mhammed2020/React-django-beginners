@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'frontend', # enable the frontend app
     'knox', #new for auth
+    'accounts',
     
     ]
 
