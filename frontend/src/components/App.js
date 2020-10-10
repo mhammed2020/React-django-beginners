@@ -1,7 +1,7 @@
 import React,{Component,Fragment} from 'react';
 import ReactDOM from 'react-dom';
 
-import {HashRouter as Rouetr,Route, Switch,Redirect } from "react-router-dom"
+import {HashRouter as Router,Route, Switch,Redirect } from "react-router-dom"
 //react alaert compo
 
 import {Provider as AlertProvider} from 'react-alert';
@@ -16,6 +16,9 @@ import Alerts from './layout/Alerts';
 //account comp
 import Login from './accounts/Login';
 import Register from './accounts/Register';
+
+//common
+import PrivateRoute from './common/PrivateRoute';
 
 
 //react alert 
@@ -42,14 +45,14 @@ class App extends Component {
 
     <AlertProvider template={AlertTemplate} {...options} >
     
-    <Rouetr>
+    <Router>
     <Fragment>
   <Header/>
   <Alerts/>
   <div className="container" >
 <Switch>
 
-<Route exact path="/" component ={Dashboard}/>
+<PrivateRoute exact path="/" component ={Dashboard}/>
 <Route exact path="/login" component ={Login}/>
 <Route exact path="/register" component ={Register}/>
 
@@ -58,7 +61,7 @@ class App extends Component {
   </div>
  
 </Fragment>
-</Rouetr>
+</Router>
 </AlertProvider>
 </Provider>        
         )
