@@ -13,6 +13,11 @@ import Header from './layout/Header';
 import Dashboard from './leads/Dashboard';
 import Alerts from './layout/Alerts';
 
+//account comp
+import Login from './accounts/Login';
+import Register from './accounts/Register';
+
+
 //react alert 
 
 
@@ -45,6 +50,9 @@ class App extends Component {
 <Switch>
 
 <Route exact path="/" component ={Dashboard}/>
+<Route exact path="/login" component ={Login}/>
+<Route exact path="/register" component ={Register}/>
+
 
 </Switch>
   </div>
