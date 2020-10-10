@@ -1,6 +1,7 @@
 import React,{Component,Fragment} from 'react';
 import ReactDOM from 'react-dom';
 
+import {HashRouter as Rouetr,Route, Switch,Redirect } from "react-router-dom"
 //react alaert compo
 
 import {Provider as AlertProvider} from 'react-alert';
@@ -35,15 +36,21 @@ class App extends Component {
 <Provider store={store}>
 
     <AlertProvider template={AlertTemplate} {...options} >
+    
+    <Rouetr>
     <Fragment>
   <Header/>
   <Alerts/>
   <div className="container" >
+<Switch>
 
-  <Dashboard/>
+<Route exact path="/" component ={Dashboard}/>
+
+</Switch>
   </div>
  
 </Fragment>
+</Rouetr>
 </AlertProvider>
 </Provider>        
         )
