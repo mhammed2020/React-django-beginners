@@ -32,6 +32,8 @@ export class Alerts extends Component {
 
         if(error.msg.non_field_errors) alert.error
         (error.msg.non_field_errors.join());
+
+        if(error.msg.username) alert.error(error.msg.username.join());
     }
 
     // delete msg with alert

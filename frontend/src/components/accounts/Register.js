@@ -28,15 +28,21 @@ static propTypes = {
   onSubmit = (e) => {
     e.preventDefault();
 
-    const {password,password2} = this.state ;
+    const {username,email,password,password2} = this.state ;
 
     if(password !==password2) {
     this.props.createMessage({passwordNotMatch :
     "Password not match"  });
   } else {
 
-    console.log("submit") ;
-  }
+const newUser = {
+  username,
+  password,
+  email
+
+}
+this.props.register(newUser) ;
+}
   };
 
   onChange = (e) => this.setState({ [e.target.name]: e.target.value });

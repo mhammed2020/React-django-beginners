@@ -42,8 +42,7 @@ const initialState = {
 
       case REGISTER_FAIL :
       
-        localStorage.setItem("token",
-        action.payload.token) ;
+        localStorage.setItem("token",action.payload.token) ;
         return {
           ...state,
           ...action.payload,
