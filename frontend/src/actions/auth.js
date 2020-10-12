@@ -21,23 +21,10 @@ import {
 
   //GET TOKEN FROM STATE
 
-  const token = getState().auth.token;
-
-  //HEADERS
-
-  const config = {
-      headers: {
-          'Content-Type' : 'application/json'
-
-      }
-  }
-if(token) {
-    config.headers['Authorization'] = `Token ${token}` ;
-}
-
+  
 //axios request
 
-axios.get('/api/auth/user',config)
+axios.get('/api/auth/user',tokenConfig(getState))
 .then(res => {
     dispatch({
         type : USER_LOADED,
@@ -93,34 +80,67 @@ axios.get('/api/auth/user',config)
    
      };
 
+
+
+     ///// register 
+
+
+
+     export const register = ({username,password,email}) => dispatch => {
+   
+        //HEADERS
+      
+        const config = {
+            headers: {
+                'Content-Type' : 'application/json'
+      
+            }
+        } ;
+   
+        //request body 
+   
+        const body = JSON.stringify({username,email, password}) ;
+   
+   
+    
+      //axios request
+      axios.post('/api/auth/register',body, config)
+      .then(res => {
+          dispatch({
+              type : REGISTER_SUCCESS,
+              payload : res.data
+          });
+      })
+      .catch(err => {
+          dispatch(returnErrors(err.response.data,
+              err.response.status)) ;
+              dispatch( {
+                  type :REGISTER_FAIL
+              });
+      });
+      
+        };
+
+
+
+
+
+
+
+
+
 //LogOut user
 
 
 
 
 export const logout = () => (dispatch,getState) => {
-    //user loading 
-   
-   
-     //GET TOKEN FROM STATE
-   
-     const token = getState().auth.token;
-   
-     //HEADERS
-   
-     const config = {
-         headers: {
-             'Content-Type' : 'application/json'
-   
-         }
-     }
-   if(token) {
-       config.headers['Authorization'] = `Token ${token}` ;
-   }
+      
+ 
    
    //axios request
    
-   axios.post('/api/auth/logout/',null,config)
+   axios.post('/api/auth/logout/',null,tokenConfig(getState))
    .then(res => {
        dispatch({
            type : LOGOUT_SUCCESS,
@@ -133,3 +153,25 @@ export const logout = () => (dispatch,getState) => {
    });
    
      };
+
+
+     //
+     // Setup config with token - helper function
+export const tokenConfig = (getState) => {
+    // Get token from state
+    const token = getState().auth.token;
+  
+    // Headers
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+  
+    // If token, add to headers config
+    if (token) {
+      config.headers['Authorization'] = `Token ${token}`;
+    }
+  
+    return config;
+  };

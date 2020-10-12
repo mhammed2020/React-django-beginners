@@ -4,7 +4,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { createMessage } from '../../actions/messages';
-
+import {register} from '../../actions/auth' ;
 
 
 
@@ -27,8 +27,16 @@ static propTypes = {
 
   onSubmit = (e) => {
     e.preventDefault();
-    console.log("Submit");
-  
+
+    const {password,password2} = this.state ;
+
+    if(password !==password2) {
+    this.props.createMessage({passwordNotMatch :
+    "Password not match"  });
+  } else {
+
+    console.log("submit") ;
+  }
   };
 
   onChange = (e) => this.setState({ [e.target.name]: e.target.value });
@@ -103,4 +111,9 @@ static propTypes = {
     }
 }
 
-export default Register
+const mapStateToProps = state => ( {
+  isAuthenticated : state.auth.isAuthenticated
+  });
+  
+  
+  export default connect(mapStateToProps,{register,createMessage }) (Register) ;
